@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .slider-container {
+            position: relative;
+            width: 600px;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: white;
+        }
+        .slider img {
+            width: 50%;
+            height: 70%;
+            object-fit: fit;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <img id="slider-image" src="https://via.placeholder.com/600x350/FF5733/FFFFFF?text=Image+1" alt="Image Slider">
+        <button class="slider-button prev" onclick="prevSlide()">&#10094;</button>
+        <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <script>
+        const images = [
+            "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+            "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+            "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
+        ];
+        let currentIndex = 0;
+        const sliderImage = document.getElementById("slider-image");
+
+        function prevSlide() {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            sliderImage.src = images[currentIndex];
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            sliderImage.src = images[currentIndex];
+        }
+    </script>
+</body>
+</html>
